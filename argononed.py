@@ -27,8 +27,10 @@ GPIO.setup(shutdown_pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 def shutdown_check():
     while True:
         pulsetime = 1
-        GPIO.wait_for_edge(shutdown_pin, GPIO.RISING)
-        time.sleep(0.01)
+        def wait_for_it():
+          level = GPIO.input(23)
+          while (GPIO.input(23)) :
+            time.sleep(0.01)
         while GPIO.input(shutdown_pin) == GPIO.HIGH:
             time.sleep(0.01)
             pulsetime += 1
